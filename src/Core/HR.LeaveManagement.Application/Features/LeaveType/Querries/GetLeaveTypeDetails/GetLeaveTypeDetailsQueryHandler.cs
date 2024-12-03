@@ -1,6 +1,7 @@
 using System;
 using AutoMapper;
 using HR.LeaveManagement.Application.Contracts.Persistance;
+using HR.LeaveManagement.Application.Exceptions;
 using MediatR;
 
 namespace HR.LeaveManagement.Application.Features.LeaveType.Querries.GetLeaveTypeDetails;
@@ -24,6 +25,11 @@ public class GetLeaveTypeDetailsQueryHandler : IRequestHandler<GetLeaveTypeDetai
         //convert data object to DTO object
         var data = _mapper.Map<LeaveTypeDetailsDto>(leaveType);
 
+        //verify that record is not exist
+        if (leaveType == null)
+        {
+            throw new NotFoundException(nameof(LeaveType), request.Id);
+        }
         //return DTO Object
         return data;
     }

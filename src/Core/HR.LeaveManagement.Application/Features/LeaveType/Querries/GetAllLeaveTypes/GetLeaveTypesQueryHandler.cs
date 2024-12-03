@@ -1,6 +1,7 @@
 using System;
 using AutoMapper;
 using HR.LeaveManagement.Application.Contracts.Persistance;
+using HR.LeaveManagement.Application.Exceptions;
 using MediatR;
 
 namespace HR.LeaveManagement.Application.Features.LeaveType.Querries.GetAllLeaveTypes;
@@ -19,9 +20,14 @@ public class GetLeaveTypesQueryHandler : IRequestHandler<GetLeaveTypesQuery, Lis
     {
         //query the Database
         var leaveTypes = await _leaveTypeRepository.GetAsync();
-        var data = _mapper.Map<List<LeaveTypeDto>>(leaveTypes);
         //Convert data Objects to DTO objects
+        var data = _mapper.Map<List<LeaveTypeDto>>(leaveTypes);
 
+        //verify that record is not exist
+        if (leaveTypes == null)
+        {
+            throw new Exception();
+        }
         //return list of DTO objects
         return data;
     }

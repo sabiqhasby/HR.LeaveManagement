@@ -19,6 +19,7 @@ public class UpdateLeaveTypeCommandHandler : IRequestHandler<UpdateLeaveTypeComm
     {
         // Validate Incoming Data
 
+
         // convert to domail entity object
         var leaveTypeToUpdate = _mapper.Map<Domain.LeaveType>(request);
         await _leaveTypeRepository.UpdateAsync(leaveTypeToUpdate);
