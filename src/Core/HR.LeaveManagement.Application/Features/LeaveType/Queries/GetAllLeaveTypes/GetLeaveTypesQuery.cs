@@ -1,7 +1,7 @@
 using System;
 using MediatR;
 
-namespace HR.LeaveManagement.Application.Features.LeaveType.Querries.GetAllLeaveTypes;
+namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
 
 // public class GetLeaveTypesQuery : IRequest<List<LeaveTypeDto>>
 // {

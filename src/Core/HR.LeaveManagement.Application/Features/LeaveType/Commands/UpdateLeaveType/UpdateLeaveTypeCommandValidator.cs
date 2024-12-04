@@ -1,6 +1,6 @@
 using System;
 using FluentValidation;
-using HR.LeaveManagement.Application.Contracts.Persistance;
+using HR.LeaveManagement.Application.Contracts.Persistence;
 
 namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.UpdateLeaveType;
 
@@ -14,7 +14,7 @@ public class UpdateLeaveTypeCommandValidator : AbstractValidator<UpdateLeaveType
 
         RuleFor(p => p.Id)
         .NotNull()
-        .MustAsync(LeaveMustExist);
+        .MustAsync(LeaveTypeMustExist);
 
         RuleFor(p => p.Name)
         .NotEmpty().WithMessage("{PropertyName} is required")
@@ -25,11 +25,18 @@ public class UpdateLeaveTypeCommandValidator : AbstractValidator<UpdateLeaveType
         .LessThan(100).WithMessage("{PropertyName} cannot exceed 100")
         .GreaterThan(1).WithMessage("{PropertyName} cannot be less than 1");
 
+        RuleFor(q => q)
+        .MustAsync(LeaveTypeNameUnique)
+        .WithMessage("Leave type already exists");
     }
 
-    private async Task<bool> LeaveMustExist(int id, CancellationToken arg2)
+    private async Task<bool> LeaveTypeMustExist(int id, CancellationToken arg2)
     {
         var leaveType = await _leaveTypeRepository.GetByIdAsync(id);
         return leaveType != null;
+    }
+    private async Task<bool> LeaveTypeNameUnique(UpdateLeaveTypeCommand command, CancellationToken arg2)
+    {
+        return await _leaveTypeRepository.IsLeaveTypeUnique(command.Name);
     }
 }

@@ -1,6 +1,6 @@
 using System;
 
-namespace HR.LeaveManagement.Application.Features.LeaveType.Querries.GetLeaveTypeDetails;
+namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetLeaveTypeDetails;
 
 public class LeaveTypeDetailsDto
 {

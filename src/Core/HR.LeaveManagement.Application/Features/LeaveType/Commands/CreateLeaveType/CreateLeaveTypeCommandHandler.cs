@@ -1,6 +1,7 @@
 using System;
 using AutoMapper;
-using HR.LeaveManagement.Application.Contracts.Persistance;
+
+using HR.LeaveManagement.Application.Contracts.Persistence;
 using HR.LeaveManagement.Application.Exceptions;
 using MediatR;
 using static HR.LeaveManagement.Application.Exceptions.NotFoundException;

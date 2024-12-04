@@ -1,7 +1,7 @@
 using System;
 using AutoMapper;
-using HR.LeaveManagement.Application.Features.LeaveType.Querries.GetAllLeaveTypes;
-using HR.LeaveManagement.Application.Features.LeaveType.Querries.GetLeaveTypeDetails;
+using HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
+using HR.LeaveManagement.Application.Features.LeaveType.Queries.GetLeaveTypeDetails;
 using HR.LeaveManagement.Domain;
 
 namespace HR.LeaveManagement.Application.MappingProfiles;
