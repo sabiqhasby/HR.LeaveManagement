@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Infrastr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Api", "src\API\HR.LeaveManagement.Api\HR.LeaveManagement.Api.csproj", "{7A94C980-5EEA-4745-AB6E-D5B3FA1AE49F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Application.UnitTests", "test\HR.LeaveManagement.Application.UnitTests\HR.LeaveManagement.Application.UnitTests.csproj", "{613AA197-0391-4F28-8601-9E43147CA9C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Application.IntegrationTests", "test\HR.LeaveManagement.Application.IntegrationTests\HR.LeaveManagement.Application.IntegrationTests.csproj", "{5D216F79-719D-4EC8-AEF5-DA08098F8A41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{7A94C980-5EEA-4745-AB6E-D5B3FA1AE49F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A94C980-5EEA-4745-AB6E-D5B3FA1AE49F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A94C980-5EEA-4745-AB6E-D5B3FA1AE49F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{613AA197-0391-4F28-8601-9E43147CA9C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{613AA197-0391-4F28-8601-9E43147CA9C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{613AA197-0391-4F28-8601-9E43147CA9C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{613AA197-0391-4F28-8601-9E43147CA9C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D216F79-719D-4EC8-AEF5-DA08098F8A41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D216F79-719D-4EC8-AEF5-DA08098F8A41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D216F79-719D-4EC8-AEF5-DA08098F8A41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D216F79-719D-4EC8-AEF5-DA08098F8A41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,5 +77,7 @@ Global
 		{F1727446-9788-46CF-A5DE-43D4DEA92952} = {0BC853B2-A6ED-4F5F-A77B-E15183380CD2}
 		{E7C12BC3-631D-4ED9-83EB-729A343ABE63} = {0BC853B2-A6ED-4F5F-A77B-E15183380CD2}
 		{7A94C980-5EEA-4745-AB6E-D5B3FA1AE49F} = {3FBE5217-9E64-4CA8-A48B-70E9052D6A26}
+		{613AA197-0391-4F28-8601-9E43147CA9C7} = {0280FF14-7DD3-42C2-B4E5-9548BB84EF27}
+		{5D216F79-719D-4EC8-AEF5-DA08098F8A41} = {0280FF14-7DD3-42C2-B4E5-9548BB84EF27}
 	EndGlobalSection
 EndGlobal
