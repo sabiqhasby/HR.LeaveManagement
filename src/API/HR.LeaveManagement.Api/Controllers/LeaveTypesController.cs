@@ -67,7 +67,7 @@ namespace HR.LeaveManagement.Api.Controllers
             return NoContent();
         }
 
-        
+
 
     }
 }
