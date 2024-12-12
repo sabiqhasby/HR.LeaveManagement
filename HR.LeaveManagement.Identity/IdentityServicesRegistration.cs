@@ -9,12 +9,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace HR.LeaveManagement.Identity
 {
    public static class IdentityServicesRegistration
    {
-      public static IServiceCollection ConfigureIdentityServices(this IServiceCollection services, IConfiguration configuration)
+      public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration configuration)
       {
          services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 
@@ -40,10 +41,13 @@ namespace HR.LeaveManagement.Identity
                ValidateIssuer = true,
                ValidateAudience = true,
                ValidateLifetime = true,
-               ClockSkew = TimeSpan.Zero
+               ClockSkew = TimeSpan.Zero,
+               ValidIssuer = configuration["JwtSettings:Issuer"],
+               ValidAudience = configuration["JwtSettings:Audience"],
+               IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:Key"]))
             };
          });
-
+         return services;
       }
    }
 }
