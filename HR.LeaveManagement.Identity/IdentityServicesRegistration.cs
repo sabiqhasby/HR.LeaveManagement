@@ -23,8 +23,7 @@ namespace HR.LeaveManagement.Identity
             options.UseSqlServer(configuration.GetConnectionString("HrDatabaseConnectionString")));
 
          services.AddIdentity<ApplicationUser, IdentityRole>()
-            .AddEntityFrameworkStores<HrLeaveManagementIdentityDbContext>()
-            .AddDefaultTokenProviders();
+             .AddEntityFrameworkStores<HrLeaveManagementIdentityDbContext>().AddDefaultTokenProviders();
 
          services.AddTransient<IAuthService, AuthService>();
          services.AddTransient<IUserService, UserService>();
@@ -45,9 +44,12 @@ namespace HR.LeaveManagement.Identity
                ValidIssuer = configuration["JwtSettings:Issuer"],
                ValidAudience = configuration["JwtSettings:Audience"],
                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:Key"]))
+
             };
          });
+
          return services;
+
       }
    }
 }

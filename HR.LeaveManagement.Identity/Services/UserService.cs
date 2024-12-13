@@ -1,18 +1,24 @@
 ﻿using HR.LeaveManagement.Application.Contracts.Identity;
 using HR.LeaveManagement.Application.Models.Identity;
 using HR.LeaveManagement.Identity.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace HR.LeaveManagement.Identity.Services
 {
    public class UserService : IUserService
    {
       private readonly UserManager<ApplicationUser> _userManager;
+      private readonly IHttpContextAccessor _contextAccessor;
 
-      public UserService(UserManager<ApplicationUser> userManager)
+      public UserService(UserManager<ApplicationUser> userManager, IHttpContextAccessor contextAccessor)
       {
-         this._userManager = userManager;
+         _userManager = userManager;
+         _contextAccessor = contextAccessor;
       }
+
+      public string UserId { get => _contextAccessor.HttpContext?.User?.FindFirstValue("uid"); }
 
       public async Task<Employee> GetEmployee(string userId)
       {
@@ -21,8 +27,8 @@ namespace HR.LeaveManagement.Identity.Services
          {
             Email = employee.Email,
             Id = employee.Id,
-            FirstName = employee.FirstName,
-            LastName = employee.LastName,
+            Firstname = employee.FirstName,
+            Lastname = employee.LastName
          };
       }
 
@@ -32,9 +38,9 @@ namespace HR.LeaveManagement.Identity.Services
          return employees.Select(q => new Employee
          {
             Id = q.Id,
-            FirstName = q.FirstName,
-            LastName = q.LastName,
-            Email = q.Email
+            Email = q.Email,
+            Firstname = q.FirstName,
+            Lastname = q.LastName
          }).ToList();
       }
    }

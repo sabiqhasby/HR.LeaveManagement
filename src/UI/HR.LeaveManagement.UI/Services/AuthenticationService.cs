@@ -9,12 +9,11 @@ namespace HR.LeaveManagement.UI.Services
    public class AuthenticationService : BaseHttpService, IAuthenticationService
    {
       private readonly AuthenticationStateProvider _authenticationStateProvider;
-
-      public AuthenticationService(IClient client
-         , ILocalStorageService localStorage
-         , AuthenticationStateProvider authenticationStateProvider) : base(client, localStorage)
+      public AuthenticationService(IClient client,
+          ILocalStorageService localStorage,
+          AuthenticationStateProvider authenticationStateProvider) : base(client, localStorage)
       {
-         this._authenticationStateProvider = authenticationStateProvider;
+         _authenticationStateProvider = authenticationStateProvider;
       }
 
       public async Task<bool> AuthenticateAsync(string email, string password)
@@ -29,7 +28,6 @@ namespace HR.LeaveManagement.UI.Services
 
                // Set claims in Blazor and login state
                await ((ApiAuthenticationStateProvider)_authenticationStateProvider).LoggedIn();
-
                return true;
             }
             return false;
@@ -40,16 +38,15 @@ namespace HR.LeaveManagement.UI.Services
          }
 
       }
-
       public async Task Logout()
       {
-         // remove claims in Blazor and Invalidate login state
+         // remove claims in Blazor and invalidate login state
          await ((ApiAuthenticationStateProvider)_authenticationStateProvider).LoggedOut();
       }
 
       public async Task<bool> RegisterAsync(string firstName, string lastName, string userName, string email, string password)
       {
-         RegistrationRequest registrationRequest = new RegistrationRequest() { FirstName = firstName, LastName = lastName, UserName = userName, Email = email, Password = password };
+         RegistrationRequest registrationRequest = new RegistrationRequest() { FirstName = firstName, LastName = lastName, Email = email, UserName = userName, Password = password };
          var response = await _client.RegisterAsync(registrationRequest);
 
          if (!string.IsNullOrEmpty(response.UserId))

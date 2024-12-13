@@ -29,10 +29,9 @@ public class LeaveTypeService : BaseHttpService, ILeaveTypeService
       }
       catch (ApiException ex)
       {
+
          return ConvertApiExceptions<Guid>(ex);
       }
-
-
    }
 
    public async Task<Response<Guid>> DeleteLeaveType(int id)
@@ -45,7 +44,6 @@ public class LeaveTypeService : BaseHttpService, ILeaveTypeService
       }
       catch (ApiException ex)
       {
-
          return ConvertApiExceptions<Guid>(ex);
       }
    }
@@ -71,11 +69,13 @@ public class LeaveTypeService : BaseHttpService, ILeaveTypeService
          await AddBearerToken();
          var updateLeaveTypeCommand = _mapper.Map<UpdateLeaveTypeCommand>(leaveType);
          await _client.LeaveTypesPUTAsync(id.ToString(), updateLeaveTypeCommand);
-         return new Response<Guid>() { Success = true };
+         return new Response<Guid>()
+         {
+            Success = true,
+         };
       }
       catch (ApiException ex)
       {
-
          return ConvertApiExceptions<Guid>(ex);
       }
    }

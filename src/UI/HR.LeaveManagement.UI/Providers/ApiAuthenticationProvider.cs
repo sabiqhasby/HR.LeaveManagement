@@ -7,35 +7,37 @@ namespace HR.LeaveManagement.UI.Providers
 {
    public class ApiAuthenticationStateProvider : AuthenticationStateProvider
    {
-      private readonly ILocalStorageService _localStorage;
+      private readonly ILocalStorageService localStorage;
       private readonly JwtSecurityTokenHandler jwtSecurityTokenHandler;
 
       public ApiAuthenticationStateProvider(ILocalStorageService localStorage)
       {
-         this._localStorage = localStorage;
+         this.localStorage = localStorage;
          jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
       }
 
       public override async Task<AuthenticationState> GetAuthenticationStateAsync()
       {
          var user = new ClaimsPrincipal(new ClaimsIdentity());
-         var isTokenPresent = await _localStorage.ContainKeyAsync("token");
-         if (isTokenPresent)
+         var isTokenPresent = await localStorage.ContainKeyAsync("token");
+         if (isTokenPresent == false)
          {
             return new AuthenticationState(user);
          }
 
-         var savedToken = await _localStorage.GetItemAsync<string>("token");
+         var savedToken = await localStorage.GetItemAsync<string>("token");
          var tokenContent = jwtSecurityTokenHandler.ReadJwtToken(savedToken);
 
-         if (tokenContent.ValidTo < DateTime.Now)
+         if (tokenContent.ValidTo < DateTime.UtcNow)
          {
-            await _localStorage.RemoveItemAsync("token");
+            await localStorage.RemoveItemAsync("token");
             return new AuthenticationState(user);
          }
 
          var claims = await GetClaims();
+
          user = new ClaimsPrincipal(new ClaimsIdentity(claims, "jwt"));
+
          return new AuthenticationState(user);
       }
 
@@ -46,24 +48,22 @@ namespace HR.LeaveManagement.UI.Providers
          var authState = Task.FromResult(new AuthenticationState(user));
          NotifyAuthenticationStateChanged(authState);
       }
+
       public async Task LoggedOut()
       {
-         await _localStorage.RemoveItemAsync("token");
-
+         await localStorage.RemoveItemAsync("token");
          var nobody = new ClaimsPrincipal(new ClaimsIdentity());
          var authState = Task.FromResult(new AuthenticationState(nobody));
          NotifyAuthenticationStateChanged(authState);
       }
 
-      public async Task<List<Claim>> GetClaims()
+      private async Task<List<Claim>> GetClaims()
       {
-         var savedToken = await _localStorage.GetItemAsync<string>("token");
+         var savedToken = await localStorage.GetItemAsync<string>("token");
          var tokenContent = jwtSecurityTokenHandler.ReadJwtToken(savedToken);
          var claims = tokenContent.Claims.ToList();
          claims.Add(new Claim(ClaimTypes.Name, tokenContent.Subject));
          return claims;
       }
-
-
    }
 }

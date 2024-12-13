@@ -7,10 +7,7 @@ public class BaseHttpService
 {
    protected IClient _client;
    protected readonly ILocalStorageService _localStorage;
-
-   public BaseHttpService(IClient client
-     , ILocalStorageService localStorage
-    )
+   public BaseHttpService(IClient client, ILocalStorageService localStorage)
    {
       _client = client;
       _localStorage = localStorage;

@@ -97,9 +97,9 @@ namespace HR.LeaveManagement.Identity.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "732478as-as4hf-44532-a5sdfh-3498sdhfshc9",
+                            Id = "8e445865-a24d-4543-a6c6-9443d048cdb9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "180d3ac0-1534-4553-bafd-50941fe9c6f9",
+                            ConcurrencyStamp = "eb3c8cde-d048-4790-b669-095963b5669d",
                             Email = "admin@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -107,17 +107,17 @@ namespace HR.LeaveManagement.Identity.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAELcR5N8RF8MFLDmHO4xanwDHF3RRV3wi3Ar8146c1YO858HKO+Xj1dSMpt9skYzMSA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGf4n2pvzvlU+3McFEpC3OKd63urCLm2lKF1ODLgTdRH8AqBGrloKTZ5IbFLmam02A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c4042ed8-dd4e-4eeb-97aa-1c9ff55e07b5",
+                            SecurityStamp = "e713471e-1299-4717-af15-55e9970caf89",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         },
                         new
                         {
-                            Id = "732478as-as4hf-44s23-a5sdfh-3498sdhfshc9",
+                            Id = "9e224968-33e4-4652-b7b7-8574d048cdb9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c5c4b9f6-eb88-46c6-98a3-818f7bab31d3",
+                            ConcurrencyStamp = "115d50e1-5ea5-48df-b8a9-c1d0245e64c6",
                             Email = "user@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -125,9 +125,9 @@ namespace HR.LeaveManagement.Identity.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@LOCALHOST.COM",
                             NormalizedUserName = "USER@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAECmK7JpaRYF035VzYIBzNiSRILvBWbW7Z/93TVsy/cVsyORau0AFUUbxC14ogEOr8A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHt8pRIMlnLxee5XP0d78xM+d7Rh5Gm+AOrVCeoPTRLkFUe10lKKwBGQXeVWU0/DBw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1736f9d4-f0e3-48eb-85ca-eddc0d085ee9",
+                            SecurityStamp = "7ebb4e42-a428-49b2-9d7b-4787d0f07f4b",
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com"
                         });
@@ -162,13 +162,13 @@ namespace HR.LeaveManagement.Identity.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "csvs453as6e-45xsd-baaf-12jasfzasdfkjf",
+                            Id = "cac43a6e-f7bb-4448-baaf-1add431ccbbf",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
-                            Id = "csvs453as6e-45xse-baaf-12jasfzasdfkjf",
+                            Id = "cbc43a8e-f7bb-4445-baaf-1add431ffbbf",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -263,13 +263,13 @@ namespace HR.LeaveManagement.Identity.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "732478as-as4hf-44s23-a5sdfh-3498sdhfshc9",
-                            RoleId = "csvs453as6e-45xsd-baaf-12jasfzasdfkjf"
+                            UserId = "8e445865-a24d-4543-a6c6-9443d048cdb9",
+                            RoleId = "cbc43a8e-f7bb-4445-baaf-1add431ffbbf"
                         },
                         new
                         {
-                            UserId = "732478as-as4hf-44532-a5sdfh-3498sdhfshc9",
-                            RoleId = "csvs453as6e-45xse-baaf-12jasfzasdfkjf"
+                            UserId = "9e224968-33e4-4652-b7b7-8574d048cdb9",
+                            RoleId = "cac43a6e-f7bb-4448-baaf-1add431ccbbf"
                         });
                 });
 

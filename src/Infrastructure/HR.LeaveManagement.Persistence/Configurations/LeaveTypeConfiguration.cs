@@ -1,4 +1,3 @@
-using System;
 using HR.LeaveManagement.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -15,14 +14,12 @@ public class LeaveTypeConfiguration : IEntityTypeConfiguration<LeaveType>
                 Id = 1,
                 Name = "Vacation",
                 DefaultDays = 10,
-                DateCreated = DateTime.Now,
-                DateModified = DateTime.Now,
+                DateCreated = DateTime.UtcNow,
+                DateModified = DateTime.UtcNow
             }
         );
-        builder.Property(q => q.Name)
-        .IsRequired()
-        .HasMaxLength(100);
-
+        // builder.Property(q => q.Name)
+        //     .IsRequired()
+        //     .HasMaxLength(100);
     }
-
 }

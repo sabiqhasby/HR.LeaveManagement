@@ -7,7 +7,11 @@ using HR.LeaveManagement.Persistence;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// berasal dari project lain
+
+//builder.Host.UseSerilog((context, loggerConfig) => loggerConfig
+//    .WriteTo.Console()
+//    .ReadFrom.Configuration(context.Configuration));
+
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddPersistenceServices(builder.Configuration);
@@ -17,11 +21,13 @@ builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
 {
-   options.AddPolicy("all", builder => builder
-   .AllowAnyOrigin()
+   options.AddPolicy("all", builder => builder.AllowAnyOrigin()
    .AllowAnyHeader()
    .AllowAnyMethod());
 });
+
+builder.Services.AddHttpContextAccessor();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -37,12 +43,14 @@ if (app.Environment.IsDevelopment())
    app.UseSwaggerUI();
 }
 
+//app.UseSerilogRequestLogging();
+
 app.UseHttpsRedirection();
 
 app.UseCors("all");
 
-app.UseAuthorization(); //Grant access that you're a valid user
-app.UseAuthorization(); //What are you allowed to do
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 

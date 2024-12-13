@@ -9,19 +9,19 @@ namespace HR.LeaveManagement.Identity.Configurations
       public void Configure(EntityTypeBuilder<IdentityRole> builder)
       {
          builder.HasData(
-            new IdentityRole
-            {
-               Id = "csvs453as6e-45xsd-baaf-12jasfzasdfkjf",
-               Name = "Employee",
-               NormalizedName = "EMPLOYEE"
-            },
              new IdentityRole
              {
-                Id = "csvs453as6e-45xse-baaf-12jasfzasdfkjf",
+                Id = "cac43a6e-f7bb-4448-baaf-1add431ccbbf",
+                Name = "Employee",
+                NormalizedName = "EMPLOYEE"
+             },
+             new IdentityRole
+             {
+                Id = "cbc43a8e-f7bb-4445-baaf-1add431ffbbf",
                 Name = "Administrator",
                 NormalizedName = "ADMINISTRATOR"
              }
-            );
+         );
       }
    }
 }

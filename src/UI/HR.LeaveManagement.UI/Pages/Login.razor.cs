@@ -25,7 +25,7 @@ namespace HR.LeaveManagement.UI.Pages
       {
          if (await AuthenticationService.AuthenticateAsync(Model.Email, Model.Password))
          {
-            NavigationManager.NavigateTo("home");
+            NavigationManager.NavigateTo("/");
          }
          Message = "Username/Password combination is incorrect.";
       }
